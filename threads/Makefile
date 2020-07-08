@@ -12,7 +12,7 @@ else
 endif
 ifeq "$(PLATFORM)" "linux"
   BAR = barrier
-  EXTRALIBS=-pthread -lrt -lbsd
+  EXTRALIBS=-pthread -lrt
 endif
 ifeq "$(PLATFORM)" "freebsd"
   BAR = barrier
@@ -25,7 +25,7 @@ endif
 
 PROGS = badexit2 cleanup exitstatus threadid
 
-all:	$(PROGS) condvar.o maketimeout.o mutex1.o mutex2.o mutex3.o rwlock.o $(TLOCK) $(BAR)
+all:	$(PROGS) condvar.o maketimeout.o mutex1.o mutex2.o mutex3.o rwlock.o $(TLOCK)
 
 %:	%.c $(LIBAPUE)
 	$(CC) $(CFLAGS) $@.c -o $@ $(LDFLAGS) $(LDLIBS)
